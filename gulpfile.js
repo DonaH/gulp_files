@@ -3,8 +3,9 @@ var
   concat = require('gulp-concat') ,
   uglify = require('gulp-uglify') ,
   uglifycss = require('gulp-uglifycss') ,
-  nodemon = require('gulp-nodemon')
-  browserSync = require('browser-sync')
+  nodemon = require('gulp-nodemon'),
+  browserSync = require('browser-sync'),
+  markdown = require('gulp-markdown')
 
 gulp.task('minify-css', function(){
   gulp.src('public-dev/css/*.css')
@@ -36,8 +37,13 @@ gulp.task('browser-sync', ['nodemon'], function(){
   })
 })
 
+// gulp.task('default', function(){
+//   return gulp.src('public-dev/intro.md')
+//     .pipe(markdown())
+//     .pipe(gulp.dest('public/js'))
+// })
+
 gulp.watch('public-dev/js/*.js', ['minify-js'])
 gulp.watch('public-dev/css/*.css', ['minify-css'])
-
 
 gulp.task('default', ['browser-sync'])
